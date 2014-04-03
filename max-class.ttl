@@ -1,9 +1,6 @@
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
-@prefix d:    <http://dbpedia.org/resource/> .
-@prefix do:   <http://dbpedia.org/ontology/> .
-@prefix dp:   <http://dbpedia.org/property/> .
 @prefix :     <http://example.org/> .
 
 #
@@ -12,17 +9,24 @@
 # e -+-> f
 #    '-> g
 #
-# h -> i
-#
+
     :a rdfs:subClassOf :b .
-    :b rdfs:subClassOf :c .
+    :b rdfs:subClassOf :sc-root-1 .
+    :i rdf:type :sc-root-1 .
 
-    :e rdfs:subClassOf :f .
-    :e rdfs:subClassOf :g .
+    :e rdfs:subClassOf :sc-root-2 .
+    :e rdfs:subClassOf :sc-root-3 .
+    :i rdf:type :sc-root-2 .
 
-    :h rdfs:subClassOf :i .
+    :p rdfs:range :rancls .
+    :i rdf:type :rancls .
 
-    :p rdfs:domain :j .
-    :p rdfs:range :k .
-    :x rdf:type :l .
+    :i rdf:type :tp-cls .
 
+    :badp rdfs:domain :baddomcls .
+    :p rdfs:domain :domcls .
+    :s :p :o .
+
+    :badp rdfs:range :badrancls .
+    :p rdfs:range :rancls .
+    :s :p :o .
