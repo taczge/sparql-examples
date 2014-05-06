@@ -1,0 +1,149 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://dbpedia.org/ontology/Work>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Event>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Letter>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Colour>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Blazon>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Flag>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/PenaltyShootOut>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/List>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/TimePeriod>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/TopicalConcept>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Sales>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/PublicService>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Food>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/UnitOfWork>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://www.w3.org/2002/07/owl#NamedIndividual>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Imdb>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/GeneLocation>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://www.w3.org/2002/07/owl#Nothing>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/EthnicGroup>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Tax>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/CelestialBody>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/MeanOfTransportation>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/CareerStation>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Polyhedron>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Unknown>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/SportCompetitionResult>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Name>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Swarm>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Agent>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Activity>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/BloodType>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://xmlns.com/foaf/0.1/OnlineAccount>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Listen>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Species>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Currency>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Place>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Holiday>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Device>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/AnatomicalStructure>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Drug>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/cidoccrm:E4_Period>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Disease>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/SnookerWorldRanking>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Database>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/ChemicalSubstance>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/PersonFunction>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Award>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Biomolecule>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://dbpedia.org/ontology/Language>
+        rdfs:subClassOf  <http://www.w3.org/2002/07/owl#Thing> .
