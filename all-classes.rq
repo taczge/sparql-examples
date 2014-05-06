@@ -1,0 +1,12 @@
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix owl:  <http://www.w3.org/2002/07/owl#>
+prefix dbpedia: <http://dbpedia.org/resource/>
+prefix dbpprop: <http://dbpedia.org/property/>
+prefix dbpedia-owl: <http://dbpedia.org/ontology/>
+
+construct {
+  ?x rdfs:subClassOf owl:Thing .
+} where {
+  ?x rdfs:subClassOf owl:Thing .
+}
