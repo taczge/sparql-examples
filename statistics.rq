@@ -3,7 +3,7 @@ prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 select ?triple ?instance ?property ?class ?resource ?literal ?blank where {
   {
-    select (count(*) as ?triple) where {
+    select (count(distinct *) as ?triple) where {
       ?s ?p ?o .
     }
   }{
@@ -12,11 +12,12 @@ select ?triple ?instance ?property ?class ?resource ?literal ?blank where {
       union
       { ?x ?p ?i . filter( ?p != rdf:type ) }
 
-      filter(isURI(?i))
-      filter(?p not in(rdfs:subClassOf,rdfs:subPropertyOf,rdfs:domain,rdfs:range))
-      filter(!strstarts(str(?i), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"))
-      filter(!strstarts(str(?i), "http://www.w3.org/2000/01/rdf-schema#"))
-      filter(!strstarts(str(?i), "http://www.w3.org/2002/07/owl#"))
+      filter(
+        isURI(?i) &&
+        ?p not in(rdfs:subClassOf,rdfs:subPropertyOf,rdfs:domain,rdfs:range) &&
+        !strstarts(str(?i), "http://www.w3.org/1999/02/22-rdf-syntax-ns#") &&
+        !strstarts(str(?i), "http://www.w3.org/2000/01/rdf-schema#") &&
+        !strstarts(str(?i), "http://www.w3.org/2002/07/owl#"))
     }
   }{
     select (count(distinct ?p) as ?property) where {
@@ -26,9 +27,10 @@ select ?triple ?instance ?property ?class ?resource ?literal ?blank where {
       union
       { ?p rdfs:subPropertyOf|^rdfs:subPropertyOf ?q . }
 
-      filter(!strstarts(str(?p), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"))
-      filter(!strstarts(str(?p), "http://www.w3.org/2000/01/rdf-schema#"))
-      filter(!strstarts(str(?p), "http://www.w3.org/2002/07/owl#"))
+      filter(
+        !strstarts(str(?p), "http://www.w3.org/1999/02/22-rdf-syntax-ns#") &&
+        !strstarts(str(?p), "http://www.w3.org/2000/01/rdf-schema#") &&
+        !strstarts(str(?p), "http://www.w3.org/2002/07/owl#"))
     }
   }{
     select (count(distinct ?c) as ?class) where {
@@ -36,17 +38,15 @@ select ?triple ?instance ?property ?class ?resource ?literal ?blank where {
       union
       { ?c rdfs:subClassOf|^rdfs:subClassOf ?x }
 
-      filter(!strstarts(str(?c), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"))
-      filter(!strstarts(str(?c), "http://www.w3.org/2000/01/rdf-schema#"))
-      filter(!strstarts(str(?c), "http://www.w3.org/2002/07/owl#"))
+      filter(
+        !strstarts(str(?c), "http://www.w3.org/1999/02/22-rdf-syntax-ns#") &&
+        !strstarts(str(?c), "http://www.w3.org/2000/01/rdf-schema#") &&
+        !strstarts(str(?c), "http://www.w3.org/2002/07/owl#"))
     }
   }{
     select (count(distinct ?x) as ?resource) where {
-      { ?x ?p ?o . filter( isURI(?x) ) }
-      union
-      { ?s ?x ?o . }
-      union
-      { ?s ?p ?x . filter( isURI(?x) ) }
+      { ?x ?p ?o . } union { ?s ?x ?o . } union { ?s ?p ?x . }
+      filter( isURI(?x) )
     }
   }{
     select (count(distinct ?o) as ?literal) where {
@@ -55,9 +55,7 @@ select ?triple ?instance ?property ?class ?resource ?literal ?blank where {
     }
   }{
     select (count(distinct ?x) as ?blank) where {
-      { ?x ?p ?o . }
-      union
-      { ?s ?p ?x . }
+      { ?x ?p ?o . } union { ?s ?p ?x . }
       filter( isBlank(?x) )
     }
   }
