@@ -2,18 +2,11 @@ prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 select (count(distinct ?c) as ?num_of_class) where {
-#select distinct ?c where {
-  { ?i rdf:type ?c . }
+  { ?x rdf:type|rdfs:domain|rdfs:range ?c . }
   union
-  { ?p rdfs:domain ?c }
-  union
-  { ?p rdfs:range ?c }
-  union
-  { ?c rdfs:subClassOf ?x }
-  union
-  { ?x rdfs:subClassOf ?c }
+  { ?c rdfs:subClassOf|^rdfs:subClassOf ?d . }
 
-  filter( !strstarts(str(?c), "http://www.w3.org/1999/02/22-rdf-syntax-ns#") &&
-          !strstarts(str(?c), "http://www.w3.org/2000/01/rdf-schema#") &&
-          !strstarts(str(?c), "http://www.w3.org/2002/07/owl#") )
+  filter(!strstarts(str(?c), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"))
+  filter(!strstarts(str(?c), "http://www.w3.org/2000/01/rdf-schema#"))
+  filter(!strstarts(str(?c), "http://www.w3.org/2002/07/owl#"))
 }

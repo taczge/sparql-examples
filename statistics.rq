@@ -1,0 +1,64 @@
+prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+select ?triple ?instance ?property ?class ?resource ?literal ?blank where {
+  {
+    select (count(*) as ?triple) where {
+      ?s ?p ?o .
+    }
+  }{
+    select (count(distinct ?i) as ?instance) where {
+      { ?i ?p ?x . }
+      union
+      { ?x ?p ?i . filter( ?p != rdf:type ) }
+
+      filter(isURI(?i))
+      filter(?p not in(rdfs:subClassOf,rdfs:subPropertyOf,rdfs:domain,rdfs:range))
+      filter(!strstarts(str(?i), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"))
+      filter(!strstarts(str(?i), "http://www.w3.org/2000/01/rdf-schema#"))
+      filter(!strstarts(str(?i), "http://www.w3.org/2002/07/owl#"))
+    }
+  }{
+    select (count(distinct ?p) as ?property) where {
+      { ?s ?p ?o . }
+      union
+      { ?p rdfs:domain|rdfs:range ?c . }
+      union
+      { ?p rdfs:subPropertyOf|^rdfs:subPropertyOf ?q . }
+
+      filter(!strstarts(str(?p), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"))
+      filter(!strstarts(str(?p), "http://www.w3.org/2000/01/rdf-schema#"))
+      filter(!strstarts(str(?p), "http://www.w3.org/2002/07/owl#"))
+    }
+  }{
+    select (count(distinct ?c) as ?class) where {
+      { ?x rdf:type|rdfs:domain|rdfs:range ?c . }
+      union
+      { ?c rdfs:subClassOf|^rdfs:subClassOf ?x }
+
+      filter(!strstarts(str(?c), "http://www.w3.org/1999/02/22-rdf-syntax-ns#"))
+      filter(!strstarts(str(?c), "http://www.w3.org/2000/01/rdf-schema#"))
+      filter(!strstarts(str(?c), "http://www.w3.org/2002/07/owl#"))
+    }
+  }{
+    select (count(distinct ?x) as ?resource) where {
+      { ?x ?p ?o . filter( isURI(?x) ) }
+      union
+      { ?s ?x ?o . }
+      union
+      { ?s ?p ?x . filter( isURI(?x) ) }
+    }
+  }{
+    select (count(distinct ?o) as ?literal) where {
+      ?s ?p ?o .
+      filter ( isLiteral(?o) )
+    }
+  }{
+    select (count(distinct ?x) as ?blank) where {
+      { ?x ?p ?o . }
+      union
+      { ?s ?p ?x . }
+      filter( isBlank(?x) )
+    }
+  }
+}
