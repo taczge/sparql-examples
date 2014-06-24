@@ -1,0 +1,12 @@
+prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+select (count(distinct ?i) as ?num_of_instance) where {
+#select distinct ?i where {
+  { ?i ?p ?o . } union { ?s ?p ?i . filter( ?p != rdf:type ) }
+
+  filter( ?p not in(rdfs:subClassOf,rdfs:subPropertyOf,rdfs:domain,rdfs:range) )
+  filter( !strstarts(str(?i), "http://www.w3.org/1999/02/22-rdf-syntax-ns#") &&
+          !strstarts(str(?i), "http://www.w3.org/2000/01/rdf-schema#") &&
+          !strstarts(str(?i), "http://www.w3.org/2002/07/owl#") )
+}

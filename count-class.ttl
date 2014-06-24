@@ -1,0 +1,14 @@
+prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix     : <http://example.org/>
+
+    :a rdf:type :A .
+    :b rdf:type :B .
+
+    :p rdfs:domain :C .
+    :q rdfs:domain :C .
+    :p rdfs:range :D .
+    :q rdfs:range :D .
+
+    :E rdfs:subClassOf :F .
+    :F rdfs:subClassOf :E .
