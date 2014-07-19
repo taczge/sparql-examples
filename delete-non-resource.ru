@@ -1,0 +1,2 @@
+delete { ?s ?p ?o . }
+where  { ?s ?p ?o . filter( !isURI(?s) || !isURI(?o) ) }
