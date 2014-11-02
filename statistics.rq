@@ -1,7 +1,7 @@
 prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-select ?triple ?instance ?property ?class ?resource ?literal ?blank where {
+select ?triple ?instance ?property ?class ?resource ?literal ?bnode where {
   {
     select (count(distinct *) as ?triple) where {
       ?s ?p ?o .
@@ -41,7 +41,7 @@ select ?triple ?instance ?property ?class ?resource ?literal ?blank where {
       filter ( isLiteral(?o) )
     }
   }{
-    select (count(distinct ?x) as ?blank) where {
+    select (count(distinct ?x) as ?bnode) where {
       { ?x ?p ?o . } union { ?s ?p ?x . }
       filter( isBlank(?x) )
     }
